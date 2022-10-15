@@ -28,7 +28,8 @@ namespace DataAccess.Concrete.MongoDb
             {
                 CourseContentDTO course = new()
                 {
-                    Id = item.CategoryId,
+                    CategoryId = item.CategoryId,
+                    CourseId = item._id,
                     CourseName = item.Name,
                     PhotoUrl = item.PhotoUrl,
                     AuthorName = _context.Users.FirstOrDefault(x=>x.Id == item.UserId).Name,

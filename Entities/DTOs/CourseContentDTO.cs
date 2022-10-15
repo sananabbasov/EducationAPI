@@ -8,7 +8,8 @@ namespace Entities.DTOs
 {
     public class CourseContentDTO
     {
-        public string Id { get; set; }
+        public string CategoryId { get; set; }
+        public string CourseId { get; set; }
         public string AuthorName { get; set; }
         public string PhotoUrl { get; set; }
         public string CourseName { get; set; }
