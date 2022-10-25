@@ -16,5 +16,6 @@ namespace Business.Abstract
         void UpdateUser(User user);
         User GetUser(string email);
         IDataResult<List<UserListDTO>> GetAllUsers();
+        IDataResult<UserListDTO> GetUserByEmail(string email);
     }
 }

@@ -22,7 +22,7 @@ namespace Core.Security.Jwt
                      new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                      new Claim (ClaimTypes.Role, role),
                  }),
-                Expires = DateTime.UtcNow.AddMinutes(2),
+                Expires = DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature),
                 Issuer = "ComparAcademy",

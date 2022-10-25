@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Entities.Concrete;
 using Core.Helpers.Results.Abstract;
+using Core.Helpers.Results.Concrete.ErrorResults;
 using Core.Helpers.Results.Concrete.SuccessResults;
 using DataAccess.Abstract;
 using Entities.DTOs;
@@ -35,6 +37,27 @@ namespace Business.Concrete
         public User GetUser(string email)
         {
             return _userDal.Get(x=>x.Email == email);
+        }
+
+        public IDataResult<UserListDTO> GetUserByEmail(string email)
+        {
+            var user = _userDal.Get(x => x.Email == email);
+
+            if (user == null)
+            {
+                return new ErrorDataResult<UserListDTO>(Messages.UserNotFound);
+            }
+
+            UserListDTO result = new()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.Name,
+                Surname = user.Surname
+            };
+
+            return new SuccessDataResult<UserListDTO>(result);
+
         }
 
         public void RemoveUser(User user)

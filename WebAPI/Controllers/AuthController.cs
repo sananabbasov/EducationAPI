@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(new { status = 200, token = result.Message });
             }
-            return BadRequest(new { message = result.Message });
+            return BadRequest(new { status = 401, message = result.Message });
         }
         
     }
